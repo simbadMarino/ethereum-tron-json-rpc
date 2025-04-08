@@ -23,6 +23,7 @@ import {
   tenderly,
 } from 'evm-providers';
 
+
 import providers from '@/data/providers.json';
 
 import { ChainId } from './chains';
@@ -67,7 +68,7 @@ const PROVIDERS: Provider[] = [
   TENDERLY,
 ];
 
-type SupportStatus = 'supported' | 'unsupported' | 'unknown';
+type SupportStatus = 'supported' | 'unsupported' | 'partially' | 'unknown';
 
 interface Features {
   websockets: SupportStatus;
@@ -154,6 +155,7 @@ function getEndpoint(provider: Provider, chain: ChainId): string | null {
       return quicknode(chain as QuickNodeChain, 'APP_NAME', 'APP_KEY');
     case TENDERLY:
       return tenderly(chain as TenderlyChain, 'ACCESS_KEY');
+
   }
 }
 

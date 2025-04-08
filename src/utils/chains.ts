@@ -49,6 +49,7 @@ import {
   moonbeam,
   moonriver,
   flare,
+  tron,
 } from 'viem/chains';
 
 const ETHEREUM = 'ethereum';
@@ -100,6 +101,7 @@ const MOONBASE_ALPHA = 'moonbase-alpha';
 const MOONBEAM = 'moonbeam';
 const MOONRIVER = 'moonriver';
 const FLARE = 'flare';
+const TRON = 'tron';
 const UNKNOWN_CHAIN = 'unknown';
 
 type ReferenceChain =
@@ -107,7 +109,8 @@ type ReferenceChain =
   | typeof OPTIMISM
   | typeof BASE
   | typeof POLYGON
-  | typeof ARBITRUM;
+  | typeof ARBITRUM
+  | typeof TRON;
 
 const REFERENCE_CHAINS: ReferenceChain[] = [
   ETHEREUM,
@@ -115,6 +118,7 @@ const REFERENCE_CHAINS: ReferenceChain[] = [
   BASE,
   POLYGON,
   ARBITRUM,
+  TRON,
 ];
 
 type Chain =
@@ -166,7 +170,8 @@ type Chain =
   | typeof MOONBASE_ALPHA
   | typeof MOONBEAM
   | typeof MOONRIVER
-  | typeof FLARE;
+  | typeof FLARE
+  | typeof TRON;
 
 type ChainId =
   | typeof mainnet.id
@@ -217,7 +222,8 @@ type ChainId =
   | typeof moonbaseAlpha.id
   | typeof moonbeam.id
   | typeof moonriver.id
-  | typeof flare.id;
+  | typeof flare.id
+  | typeof tron.id;
 
 const CHAINS: Chain[] = [
   ETHEREUM,
@@ -269,6 +275,7 @@ const CHAINS: Chain[] = [
   MOONBEAM,
   MOONRIVER,
   FLARE,
+  TRON,
 ];
 const CHAIN_IDS: ChainId[] = [
   mainnet.id,
@@ -320,6 +327,7 @@ const CHAIN_IDS: ChainId[] = [
   moonbeam.id,
   moonriver.id,
   flare.id,
+  tron.id,
 ];
 
 function getChainName(chain: Chain | typeof UNKNOWN_CHAIN): string {
@@ -430,6 +438,8 @@ function getChainById(chainId: ChainId): Chain {
       return MOONRIVER;
     case flare.id:
       return FLARE;
+    case tron.id:
+      return TRON;
   }
 }
 
@@ -538,6 +548,8 @@ function getChainData(chain: Chain): ChainData {
       return moonriver;
     case FLARE:
       return flare;
+    case TRON:
+      return tron;
   }
 }
 
@@ -550,6 +562,7 @@ export {
   BASE,
   POLYGON,
   ARBITRUM,
+  TRON,
   UNKNOWN_CHAIN,
   getChainData,
   getChainById,

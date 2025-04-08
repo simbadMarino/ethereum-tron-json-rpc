@@ -8,11 +8,12 @@ import {
   ETHEREUM,
   OPTIMISM,
   POLYGON,
+  TRON,
   getChainId,
   getChainData,
 } from '@/utils/chains';
 import type { ReferenceChain } from '@/utils/chains';
-import { ALCHEMY, ANKR, INFURA } from '@/utils/providers';
+import { ALCHEMY, ANKR, INFURA, QUICK_NODE } from '@/utils/providers';
 
 const STORAGE_KEY_PROVIDER = 'provider';
 
@@ -26,7 +27,7 @@ interface CustomProviderOptions {
   url: string;
 }
 
-type Preset = typeof ALCHEMY | typeof INFURA | typeof ANKR;
+type Preset = typeof ALCHEMY | typeof INFURA | typeof ANKR | typeof QUICK_NODE;
 
 interface PresetProviderOptions {
   type: 'preset';
@@ -129,5 +130,5 @@ function getChain(chainId: number): ReferenceChain | null {
 }
 
 export default useChain;
-export { ALCHEMY, ANKR, REFERENCE_CHAINS, INFURA };
+export { ALCHEMY, ANKR, REFERENCE_CHAINS, INFURA, QUICK_NODE };
 export type { Preset, PresetProviderOptions, ReferenceChain };
